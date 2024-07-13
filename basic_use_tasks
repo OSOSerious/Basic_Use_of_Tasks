@@ -1,0 +1,144 @@
+"""
+* WORKING
+
+What this script does:
+This script defines a SwarmAgent class that documents all possible arguments
+for creating an agent in the Swarms framework. It serves as a reference for
+new users to understand the available configuration options.
+
+Requirements:
+- Swarms framework installed
+
+Note: 
+If you are running playground examples in the project files directly 
+(without swarms installed via PIP), make sure to add the project root to 
+your PYTHONPATH by running the following command in the project's root 
+directory:
+  'export PYTHONPATH=$(pwd):$PYTHONPATH'
+"""
+
+from swarms import Agent
+from typing import List, Dict, Any, Optional
+
+class SwarmAgent(Agent):
+    def __init__(
+        self,
+        name: str,
+        role: str = "General Assistant",
+        goals: Optional[List[str]] = None,
+        backstory: str = "",
+        traits: Optional[List[str]] = None,
+        capabilities: Optional[List[str]] = None,
+        memory: Optional[Dict[str, Any]] = None,
+        knowledge_base: Optional[Dict[str, Any]] = None,
+        communication_style: str = "neutral",
+        decision_making_strategy: str = "rational",
+        learning_rate: float = 0.1,
+        adaptability: float = 0.5,
+        collaboration_tendency: float = 0.5,
+        ethical_framework: str = "utilitarian",
+        performance_metrics: Optional[Dict[str, float]] = None,
+        task_priority: Optional[List[str]] = None,
+        resource_management: Optional[Dict[str, float]] = None,
+        error_handling: str = "default",
+        update_interval: int = 1
+    ):
+        """
+        Initialize a SwarmAgent with comprehensive configuration options.
+
+        Args:
+            name (str): The unique identifier for the agent.
+            role (str): The agent's function within the swarm. Defaults to 
+                "General Assistant".
+            goals (Optional[List[str]]): Objectives the agent aims to 
+                achieve. Defaults to None.
+            backstory (str): Narrative background providing context for the 
+                agent's behavior. Defaults to an empty string.
+            traits (Optional[List[str]]): Personality characteristics 
+                influencing behavior. Defaults to None.
+            capabilities (Optional[List[str]]): Specific skills or abilities 
+                of the agent. Defaults to None.
+            memory (Optional[Dict[str, Any]]): Storage for the agent's past 
+                experiences or knowledge. Defaults to None.
+            knowledge_base (Optional[Dict[str, Any]]): Pre-existing 
+                knowledge of the agent. Defaults to None.
+            communication_style (str): The agent's manner of communication. 
+                Options: "formal", "casual", "technical", etc. Defaults to 
+                "neutral".
+            decision_making_strategy (str): Approach for decision making. 
+                Options: "rational", "emotional", "heuristic". Defaults to 
+                "rational".
+            learning_rate (float): Speed of learning from new information 
+                (0 to 1). Defaults to 0.1.
+            adaptability (float): Ability to adapt to new situations 
+                (0 to 1). Defaults to 0.5.
+            collaboration_tendency (float): Inclination to collaborate with 
+                others (0 to 1). Defaults to 0.5.
+            ethical_framework (str): Ethical system for decision making. 
+                Options: "utilitarian", "deontological", "virtue ethics". 
+                Defaults to "utilitarian".
+            performance_metrics (Optional[Dict[str, float]]): Metrics for 
+                evaluating agent performance. Defaults to None.
+            task_priority (Optional[List[str]]): Ordered list of task 
+                priorities. Defaults to None.
+            resource_management (Optional[Dict[str, float]]): Available 
+                resources and their quantities. Defaults to None.
+            error_handling (str): Strategy for handling errors. Options: 
+                "default", "aggressive", "passive". Defaults to "default".
+            update_interval (int): Frequency of agent updates in time steps. 
+                Defaults to 1.
+        """
+        super().__init__(name)
+        self.role = role
+        self.goals = goals or []
+        self.backstory = backstory
+        self.traits = traits or []
+        self.capabilities = capabilities or []
+        self.memory = memory or {}
+        self.knowledge_base = knowledge_base or {}
+        self.communication_style = communication_style
+        self.decision_making_strategy = decision_making_strategy
+        self.learning_rate = learning_rate
+        self.adaptability = adaptability
+        self.collaboration_tendency = collaboration_tendency
+        self.ethical_framework = ethical_framework
+        self.performance_metrics = performance_metrics or {}
+        self.task_priority = task_priority or []
+        self.resource_management = resource_management or {}
+        self.error_handling = error_handling
+        self.update_interval = update_interval
+
+    def step(self):
+        """
+        Perform a single step of the agent's behavior in the simulation.
+        This method should be implemented to define the agent's actions.
+        """
+        # Implementation of the agent's behavior goes here
+        pass
+
+# Example usage
+if __name__ == "__main__":
+    agent = SwarmAgent(
+        name="Agent001",
+        role="Data Analyst",
+        goals=["Analyze market trends", "Provide insights"],
+        traits=["Analytical", "Detail-oriented"],
+        capabilities=["Data processing", "Statistical analysis"],
+        communication_style="technical",
+        decision_making_strategy="rational",
+        learning_rate=0.2,
+        adaptability=0.7,
+        collaboration_tendency=0.6,
+        ethical_framework="utilitarian",
+        task_priority=["Data collection", "Analysis", "Reporting"],
+        resource_management={"CPU": 0.8, "Memory": 0.6},
+        error_handling="aggressive",
+        update_interval=2
+    )
+    
+    print(f"Agent created: {agent.name}")
+    print(f"Role: {agent.role}")
+    print(f"Goals: {agent.goals}")
+    print(f"Traits: {agent.traits}")
+    print(f"Task Priority: {agent.task_priority}")
+    print(f"Resource Management: {agent.resource_management}")
